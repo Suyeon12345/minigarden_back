@@ -3,4 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.GardenMapper">
+    <select id="getOK" parameterType="map" resultType="map">
+        select * from garden_table
+    </select>
 </mapper>
