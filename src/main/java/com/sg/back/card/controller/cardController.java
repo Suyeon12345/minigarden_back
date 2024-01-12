@@ -28,6 +28,7 @@ public class CardController {
         logger.info("cardPicker");
         logger.info(cmap.toString());
         List<Map<String,Object>> cardList = null;
+        cardList = cardLogic.getCard(cmap);
         Gson g = new Gson();
         String temp = g.toJson(cardList);
         return temp;
