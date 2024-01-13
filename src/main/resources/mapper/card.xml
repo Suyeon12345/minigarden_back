@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.CardMapper">
+     <!-- 홀수 번호 무작위 한 개 추출 -->
+  <select id="getOddCard" resultType="java.util.Map">
+    SELECT content
+    FROM card_quote
+    WHERE mod(num, 2) != 0
+    ORDER BY DBMS_RANDOM.value
+    FETCH FIRST 1 ROW ONLY;
+  </select>
+
+  <!-- 짝수 번호 무작위 한 개 추출 -->
+  <select id="getEvenCard" resultType="java.util.Map">
+    SELECT content
+    FROM card_quote
+    WHERE mod(num, 2) = 0
+    ORDER BY DBMS_RANDOM.value
+    FETCH FIRST 1 ROW ONLY;
+  </select>
+</mapper>
