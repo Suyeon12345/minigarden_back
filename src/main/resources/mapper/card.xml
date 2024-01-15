@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.CardMapper">
+<insert id ="makeCard" parameterType="java.util.Map">
+  INSERT INTO CARD_QUOTE(NUM, CONTENT)
+  VALUES(SEQ_CARD_NUM.NEXTVAL, #{content})
+</insert>
   <!-- 홀수/짝수 번호 무작위 한 개 추출 -->
   <select id="getCard" resultType="java.util.Map">
     SELECT CONTENT

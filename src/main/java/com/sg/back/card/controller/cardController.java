@@ -13,6 +13,8 @@ import com.google.gson.Gson;
 import com.sg.back.card.logic.CardLogic;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -33,5 +35,13 @@ public class CardController {
         String temp = g.toJson(cardList);
         return temp;
     }
-    
+     @PostMapping("makecard")
+    public String makeCard(@RequestBody Map<String,Object> cMap) {
+        logger.info("makeCard");
+        logger.info(cMap.toString());
+        int result =0;
+        result= cardLogic.makeCard(cMap);
+        
+        return String.valueOf(result);
+    }
 }

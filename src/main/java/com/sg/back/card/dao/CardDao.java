@@ -20,5 +20,11 @@ public class CardDao {
         cardList=sqlSessionTemplate.selectList("getCard",cmap);
         return cardList;
     }
+    public int makeCard(Map<String, Object> cMap) {
+       logger.info("makeCard-dao");
+       int result = 0;
+       result = sqlSessionTemplate.insert("makeCard",cMap);
+       return result;
+    }
     
 }

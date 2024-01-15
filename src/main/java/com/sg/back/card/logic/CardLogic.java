@@ -23,5 +23,12 @@ public class CardLogic {
         List<Map<String,Object>>cardList=null;
         cardList=cardDao.getCard(cmap);
         return cardList;
+    }
+
+    public int makeCard(Map<String, Object> cMap) {
+        logger.info("makeCard-Logic");
+        int result=0;
+        result = cardDao.makeCard(cMap);
+        return result;
     }    
 }
