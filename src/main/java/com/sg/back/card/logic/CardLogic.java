@@ -25,6 +25,13 @@ public class CardLogic {
         return cardList;
     }
 
+    public List<Map<String, Object>> getusers(Map<String, Object> umap) {
+        logger.info("cardLogic: getCard");
+        List<Map<String,Object>>usersList=null;
+        usersList=cardDao.getusers(umap);
+        return usersList;
+    }
+
     public int makeCard(Map<String, Object> cMap) {
         logger.info("makeCard-Logic");
         int result=0;

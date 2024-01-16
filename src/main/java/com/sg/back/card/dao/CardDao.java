@@ -20,6 +20,12 @@ public class CardDao {
         cardList=sqlSessionTemplate.selectList("getCard",cmap);
         return cardList;
     }
+    public List<Map<String, Object>> getusers(Map<String, Object> umap) {
+        logger.info("carddao : getUsers-dao");
+        List<Map<String,Object>> usersList=null;
+        usersList=sqlSessionTemplate.selectList("usersList",umap);
+        return usersList;
+    }
     public int makeCard(Map<String, Object> cMap) {
        logger.info("makeCard-dao");
        int result = 0;
