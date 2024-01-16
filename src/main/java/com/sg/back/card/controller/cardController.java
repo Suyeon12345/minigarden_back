@@ -45,7 +45,17 @@ public class CardController {
         String temp = g.toJson(usersList);
         return temp;
     }
-    
+    @GetMapping("userdetail")
+    public String userDetail(@RequestParam Map<String,Object> umap) {
+        logger.info("userDetail");
+        logger.info(umap.toString());
+        List<Map<String,Object>> userdetail = null;
+        userdetail = cardLogic.getusers(umap);
+        Gson g = new Gson();
+        String temp = g.toJson(userdetail);
+        return temp;
+    }
+
      @PostMapping("makecard")
     public String makeCard(@RequestBody Map<String,Object> cMap) {
         logger.info("makeCard");
