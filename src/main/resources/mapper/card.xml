@@ -24,5 +24,8 @@
     ORDER BY dbms_random.value
     FETCH FIRST 1 ROW ONLY
   </select>
-
+    <select id="usersList" resultType="java.util.Map">
+    SELECT u_num, u_name, u_status, u_birth, u_age, u_manager 
+    FROM users
+  </select>
 </mapper>
