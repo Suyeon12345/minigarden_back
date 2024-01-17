@@ -18,7 +18,7 @@ public class deptDao {
 
     public List<Map<String, Object>> deptList(Map<String, Object> pmap){
         
-        log.info("deptlist-deptdao 호출");
+        log.info("deptlist-deptdao 호출123");
 
         List<Map<String, Object>> list =sqlSessionTemplate.selectList("deptMapper.deptList");
         
