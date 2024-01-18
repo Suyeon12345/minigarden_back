@@ -37,7 +37,7 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
-	implementation 'com.oracle.ojdbc:orai18n:19.3.0.0'
+//	implementation 'com.oracle.ojdbc:orai18n:19.3.0.0'
 }
 
 tasks.named('bootBuildImage') {
