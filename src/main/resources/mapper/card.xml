@@ -43,6 +43,5 @@
 				</choose>
 			</if>
 		</where>
-    order by u_num desc
   </select>
 </mapper>
