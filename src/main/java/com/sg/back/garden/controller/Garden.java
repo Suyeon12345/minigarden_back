@@ -31,4 +31,13 @@ public class Garden {
         String temp = g.toJson(gList);
         return temp;
     }
+    @GetMapping("getDeptData")
+    public String getDeptData(){
+        logger.info("getDeptData호출");
+        List<Map<String, Object>> dList = null;
+        dList = gardenLogic.getDeptData();
+        Gson g = new Gson();
+        String temp = g.toJson(dList);
+        return temp;
+    }
 }

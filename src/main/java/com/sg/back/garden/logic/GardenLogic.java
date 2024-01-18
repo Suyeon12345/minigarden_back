@@ -24,4 +24,11 @@ public class GardenLogic {
         gList = gardenDao.getOK(rmap);
         return gList;
     }
+
+    public List<Map<String, Object>> getDeptData() {
+        logger.info("Garden Logic: getDeptData");
+        List<Map<String, Object>> dList = null;
+        dList = gardenDao.getDeptData();
+        return dList;
+    }
 }

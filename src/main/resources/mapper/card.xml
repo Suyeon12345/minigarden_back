@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.CardMapper">
+<insert id ="makeCard" parameterType="java.util.Map">
+  INSERT INTO CARD_QUOTE(NUM, CONTENT)
+  VALUES(SEQ_CARD_NUM.NEXTVAL, #{content})
+</insert>
+  <!-- 홀수/짝수 번호 무작위 한 개 추출 -->
+  <select id="getCard" resultType="java.util.Map">
+    SELECT CONTENT
+    FROM CARD_QUOTE
+    <where>
+      <choose>
+        <when test="odd">
+          MOD(NUM, 2) != 0
+        </when>
+        <when test="even">
+          MOD(NUM, 2) = 0
+        </when>
+      </choose>
+    </where>
+    ORDER BY dbms_random.value
+    FETCH FIRST 1 ROW ONLY
+  </select>
+    <select id="usersList" resultType="java.util.Map">
+    SELECT u_num, u_name, u_status, u_birth, u_age, u_manager 
+    FROM users
+    <where>
+    <if test="u_num!=null">AND u_num=#{u_num}</if>
+			<if test="gubun!=null">
+				<choose>
+					<when test='gubun.equals("u_name")'>
+						AND u_name LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("u_manager")'>
+						AND u_manager LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("u_status")'>
+						AND u_status LIKE '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</if>
+		</where>
+  </select>
+</mapper>

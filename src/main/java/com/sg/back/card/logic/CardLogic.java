@@ -1,0 +1,41 @@
+package com.sg.back.card.logic;
+
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sg.back.card.dao.CardDao;
+
+
+@Service
+public class CardLogic {
+    Logger logger = LoggerFactory.getLogger(CardLogic.class);
+
+    @Autowired
+    CardDao cardDao = null;
+
+    public List<Map<String, Object>> getCard(Map<String, Object> cmap) {
+        logger.info("cardLogic: getCard");
+        List<Map<String,Object>>cardList=null;
+        cardList=cardDao.getCard(cmap);
+        return cardList;
+    }
+
+    public List<Map<String, Object>> getusers(Map<String, Object> umap) {
+        logger.info("cardLogic: getCard");
+        List<Map<String,Object>>usersList=null;
+        usersList=cardDao.getusers(umap);
+        return usersList;
+    }
+
+    public int makeCard(Map<String, Object> cMap) {
+        logger.info("makeCard-Logic");
+        int result=0;
+        result = cardDao.makeCard(cMap);
+        return result;
+    }    
+}
