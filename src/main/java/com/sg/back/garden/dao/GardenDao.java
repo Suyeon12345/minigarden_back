@@ -21,4 +21,11 @@ public class GardenDao {
         gList = sqlSessionTemplate.selectList("getOK",rmap);
         return gList;
     }
+
+    public List<Map<String, Object>> getDeptData() {
+        logger.info("Garden Logic: getDeptData");
+        List<Map<String, Object>> dList = null;
+        dList = sqlSessionTemplate.selectList("getDeptData");
+        return dList;
+    }
 }
