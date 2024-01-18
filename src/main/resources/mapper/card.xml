@@ -27,5 +27,22 @@
     <select id="usersList" resultType="java.util.Map">
     SELECT u_num, u_name, u_status, u_birth, u_age, u_manager 
     FROM users
+    <where>
+    <if test="u_num!=null">AND u_num=#{u_num}</if>
+			<if test="gubun!=null">
+				<choose>
+					<when test='gubun.equals("u_name")'>
+						AND u_name LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("u_manager")'>
+						AND u_manager LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("u_status")'>
+						AND u_status LIKE '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</if>
+		</where>
+    order by u_num desc
   </select>
 </mapper>
