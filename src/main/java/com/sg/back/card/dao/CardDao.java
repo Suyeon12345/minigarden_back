@@ -3,11 +3,14 @@ package com.sg.back.card.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.sg.back.card.logic.CardLogic;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.*;
 
 @Repository
 public class CardDao {
