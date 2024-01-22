@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/card/*")
 public class CardController {
+
     Logger logger = LoggerFactory.getLogger(CardController.class);
-    
+
+
     @Autowired
     CardLogic cardLogic = null;
     @GetMapping("cardpicker")
@@ -56,13 +58,14 @@ public class CardController {
         return temp;
     }
 
-     @PostMapping("makecard")
+    @PostMapping("makecard")
     public String makeCard(@RequestBody Map<String,Object> cMap) {
         logger.info("makeCard");
         logger.info(cMap.toString());
         int result =0;
         result= cardLogic.makeCard(cMap);
-        
+
         return String.valueOf(result);
     }
 }
+
