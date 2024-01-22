@@ -4,18 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="deptMapper">
 <select id = "deptList" parameterType = "map" resultType = "map">
-select d_no, d_id, d_name, d_nae from dept
+select d_no, d_id, d_name, d_nae from sydept
 </select>
 <select id = "deptDetail" parameterType = "map" resultType = "map">
-select d_no, d_id, d_name, d_nae from dept where d_no = #{d_no}
+select d_no, d_id, d_name, d_nae from sydept where d_no = #{d_no}
 </select>
 <insert id = "deptInsert" parameterType = "map">
-insert into dept(d_no, d_id, d_name, d_nae) values(SEQ_DEPT_NO.nextval,#{d_id}, #{d_name},#{d_nae})
+insert into sydept(d_no, d_id, d_name, d_nae) values(SEQ_SYDEPT_NO.nextval,#{d_id}, #{d_name},#{d_nae})
 </insert>
 <update id = "deptUpdate" parameterType = "map">
-update dept set d_id = #{d_id}, d_name = #{d_name}, d_nae = #{d_nae} where d_no = #{d_no}
+update sydept set d_id = #{d_id}, d_name = #{d_name}, d_nae = #{d_nae} where d_no = #{d_no}
 </update>
 <delete id = "deptDelete" parameterType = "map">
-delete from dept where d_no = #{d_no}
+delete from sydept where d_no = #{d_no}
 </delete>
 </mapper>
