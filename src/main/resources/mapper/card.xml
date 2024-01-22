@@ -8,10 +8,12 @@
   VALUES(SEQ_CARD_NUM.NEXTVAL, #{content})
 </insert>
   <!-- 홀수/짝수 번호 무작위 한 개 추출 -->
-  <select id="getCard" resultType="java.util.Map">
-    SELECT CONTENT
+ <select id="getCard" resultType="java.util.Map">
+  SELECT CONTENT
+  FROM (
+    SELECT CONTENT, ROW_NUMBER() OVER (ORDER BY dbms_random.value) AS row_num
     FROM CARD_QUOTE
-    <where>
+    WHERE
       <choose>
         <when test="odd">
           MOD(NUM, 2) != 0
@@ -19,11 +21,13 @@
         <when test="even">
           MOD(NUM, 2) = 0
         </when>
+        <otherwise>
+          1=1
+        </otherwise>
       </choose>
-    </where>
-    ORDER BY dbms_random.value
-    FETCH FIRST 1 ROW ONLY
-  </select>
+  )
+  WHERE row_num = 1
+</select>
     <select id="usersList" resultType="java.util.Map">
     SELECT u_num, u_name, u_status, u_birth, u_age, u_manager 
     FROM users
