@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.EmpMapper">
     <select id="empList" parameterType="map" resultType="map">
-        select e_code, e_name, e_gender, e_phone from emp240118
+        select e_code, e_name, e_gender, e_phone from emp240119
         <where>
             <if test="e_code!=null">And e_code=#{e_code}</if>
             <if test="gubun!=null">
@@ -12,10 +12,10 @@
                     <when test='gubun.equals("e_name")'>
                         And e_name LIKE '%'||#{keyword}||'%'
                     </when>
-                    <when test='gubun.equals("empcode")'>
-                        And e_code LIKE '%'||#{keyword}||'%'
+                    <when test='gubun.equals("e_gender")'>
+                        And e_gender LIKE '%'||#{keyword}||'%'
                     </when>
-                    <when test='gubun.equals("emppnumber")'>
+                    <when test='gubun.equals("e_phone")'>
                         And e_phone LIKE '%'||#{keyword}||'%'
                     </when>
                 </choose>
@@ -24,13 +24,29 @@
         order by e_code desc
     </select>
     <update id="empUpdate" parameterType="map">
-        update emp240118
+        update emp240119
             set e_name = #{e_name}
               , e_gender = #{e_gender}
               , e_phone = #{e_phone}
         where e_code = #{e_code}
     </update>
     <delete id="empDelete" parameterType="int">
-        delete from emp240118 where e_code = #{value}
+        delete from emp240119 where e_code = #{value}
     </delete>
+    <!--==========================[[ VO 사용 시작 ]]===================================-->
+    <resultMap id="empVO" type="com.sg.back.lsg.vo.EmpVO">
+        <id property="e_code" column="e_code" />
+        <result property="e_name" column="e_name" />
+        <result property="e_gender" column="e_gender" />
+        <result property="e_phone" column="e_phone" />
+    </resultMap>
+    <select id="getEmpList" resultMap="empVO">
+        SELECT e_code, e_name, e_gender, e_phone
+        FROM emp240119
+    </select>
+    <insert id="insertEmp" parameterType="com.sg.back.lsg.vo.EmpVO">
+        insert into emp240119 (e_code, e_name, e_gender, e_phone)
+        values (#{e_code}, #{e_name}, #{e_gender}, #{e_phone})
+    </insert>
+    <!--==========================[[ VO 사용 끝 ]]===================================-->
 </mapper>
