@@ -6,7 +6,16 @@
 <select id = "deptList" parameterType = "map" resultType = "map">
 select d_no, d_id, d_name, d_nae from dept
 </select>
-<insert id = "deptCreate" parameterType = "map">
+<select id = "deptDetail" parameterType = "map" resultType = "map">
+select d_no, d_id, d_name, d_nae from dept where d_no = #{d_no}
+</select>
+<insert id = "deptInsert" parameterType = "map">
 insert into dept(d_no, d_id, d_name, d_nae) values(SEQ_DEPT_NO.nextval,#{d_id}, #{d_name},#{d_nae})
 </insert>
+<update id = "deptUpdate" parameterType = "map">
+update dept set d_id = #{d_id}, d_name = #{d_name}, d_nae = #{d_nae} where d_no = #{d_no}
+</update>
+<delete id = "deptDelete" parameterType = "map">
+delete from dept where d_no = #{d_no}
+</delete>
 </mapper>

@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +36,34 @@ public class deptController {
         return temp;
     }
 
-    @PostMapping("deptcreate")
-    public void deptCreate(@RequestParam Map<String, Object> pmap){
-        log.info("deptcreate-deptcontroller 호출");
-        deptLogic.deptCreate(pmap);
+    @GetMapping("deptdetail")
+    public String deptDetail(@RequestParam Map<String, Object> pamp){
+        log.info("deptdetail-deptcontroller 호출");
+        List<Map<String, Object>> list = null;
+        list = deptLogic.deptDetail(pamp);
+        Gson g = new Gson();
+        String temp = g.toJson(list);
+
+        return temp;
+    }
+
+
+    @PostMapping("deptinsert")
+    public void deptInsert(@RequestParam Map<String, Object> pmap){
+        log.info("deptInsert-deptcontroller 호출");
+        deptLogic.deptInsert(pmap);
     }
     
+
+    @PutMapping("deptupdate")
+    public void deptUpdate(@RequestParam Map<String, Object> pmap){
+        log.info("deptUpdate-deptcontroller 호출");
+        deptLogic.deptUpdate(pmap);
+    }
+
+    @DeleteMapping("deptdelete")
+    public void deptDelete(@RequestParam Map<String, Object> pmap){
+        log.info("deptDelete-deptcontroller 호출");
+        deptLogic.deptDelete(pmap);
+    }
 }

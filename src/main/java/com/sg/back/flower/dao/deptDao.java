@@ -18,7 +18,7 @@ public class deptDao {
 
     public List<Map<String, Object>> deptList(Map<String, Object> pmap){
         
-        log.info("deptlist-deptdao 호출123");
+        log.info("deptlist-deptdao");
 
         List<Map<String, Object>> list =sqlSessionTemplate.selectList("deptMapper.deptList");
         
@@ -26,11 +26,40 @@ public class deptDao {
 
     }
 
-    public void deptCreate(Map<String, Object> pmap){
-        
-        log.info("deptCreate-deptdao 호출");
 
-        sqlSessionTemplate.insert("deptMapper.deptCreate", pmap);
+    public List<Map<String, Object>> deptDetail(Map<String, Object> pmap){
+        
+        log.info("deptDetail-deptdao");
+
+        List<Map<String, Object>> list =sqlSessionTemplate.selectList("deptMapper.deptDetail", pmap);
+        
+        return list;
+
+    }
+
+    public void deptInsert(Map<String, Object> pmap){
+        
+        log.info("deptInsert-deptdao 호출");
+
+        sqlSessionTemplate.insert("deptMapper.deptInsert", pmap);
+        
+
+    }
+
+    public void deptUpdate(Map<String, Object> pmap){
+        
+        log.info("deptUpdate-deptdao 호출");
+
+        sqlSessionTemplate.update("deptMapper.deptUpdate", pmap);
+        
+
+    }
+
+    public void deptDelete(Map<String, Object> pmap){
+        
+        log.info("deptDelete-deptdao 호출");
+
+        sqlSessionTemplate.delete("deptMapper.deptDelete", pmap);
         
 
     }

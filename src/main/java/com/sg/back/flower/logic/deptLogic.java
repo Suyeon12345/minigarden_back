@@ -25,9 +25,30 @@ public class deptLogic {
         return list;
     }
 
-    public void deptCreate(Map<String, Object> pmap){
-        log.info("deptCreate-deptlogic 호출");
-        deptDao.deptCreate(pmap);
+        
+    public List<Map<String, Object>> deptDetail(Map<String, Object> pmap){
+        log.info("deptDetail-deptlogic 호출");
+        List<Map<String, Object>> list = new ArrayList<>();
+        list = deptDao.deptDetail(pmap);
+        return list;
+    }
+
+    public void deptInsert(Map<String, Object> pmap){
+        log.info("deptInsert-deptlogic 호출");
+        deptDao.deptInsert(pmap);
+     
+    }
+
+    public void deptUpdate(Map<String, Object> pmap){
+        log.info("deptUpdate-deptlogic 호출");
+        deptDao.deptUpdate(pmap);
+     
+    }
+
+
+    public void deptDelete(Map<String, Object> pmap){
+        log.info("deptUpdate-deptlogic 호출");
+        deptDao.deptDelete(pmap);
      
     }
 }
