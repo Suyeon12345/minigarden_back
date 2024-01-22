@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/card/*")
 public class CardController {
-    Logger logger = LoggerFactory.getLogger(com.sg.back.card.controller.CardController.class);
+
+    Logger logger = LoggerFactory.getLogger(CardController.class);
+
 
     @Autowired
     CardLogic cardLogic = null;
