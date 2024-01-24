@@ -35,4 +35,11 @@ public class AngelDao {
         result = sqlSessionTemplate.insert("pgInsert",pmap);
         return result;
     }
+
+    public int pgDelete(int pg_No) {
+        logger.info("AngelDao-pgDelete");
+        int result = 0;
+        result = sqlSessionTemplate.insert("pgDelete",pg_No);
+        return result;
+    }
 }

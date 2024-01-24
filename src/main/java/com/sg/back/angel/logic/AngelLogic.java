@@ -37,4 +37,11 @@ public class AngelLogic {
         result = angelDao.pgInsert(pmap);
         return result;
     }
+
+    public int pgDelete(int pg_No) {
+        logger.info("AngelLogic-pgDelete");
+        int result = 0;
+        result = angelDao.pgDelete(pg_No);
+        return result;
+    }
 }

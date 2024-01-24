@@ -53,4 +53,11 @@ public class AngelController {
         result = angelLogic.pgInsert(pmap);
         return String.valueOf(result);
     }
+    @DeleteMapping("pgDelete")
+    public String pgDelete(int pg_no){
+        logger.info("AngelController-pgDelete");
+        int result = 0;
+        result = angelLogic.pgDelete(pg_no);
+        return String.valueOf(result);
+    }
 }
