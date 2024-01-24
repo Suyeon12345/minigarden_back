@@ -47,7 +47,7 @@ public class deptLogic {
 
 
     public void deptDelete(Map<String, Object> pmap){
-        log.info("deptUpdate-deptlogic 호출");
+        log.info("deptDelete-deptlogic 호출");
         deptDao.deptDelete(pmap);
      
     }

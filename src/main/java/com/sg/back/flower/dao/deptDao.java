@@ -16,8 +16,9 @@ public class deptDao {
     @Autowired
     SqlSessionTemplate sqlSessionTemplate = null;
 
+
     public List<Map<String, Object>> deptList(Map<String, Object> pmap){
-        
+
         log.info("deptlist-deptdao");
 
         List<Map<String, Object>> list =sqlSessionTemplate.selectList("deptMapper.deptList");

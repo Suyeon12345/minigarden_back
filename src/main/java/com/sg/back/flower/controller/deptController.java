@@ -4,21 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.Gson;
 import com.sg.back.flower.logic.deptLogic;
 
 import lombok.extern.log4j.Log4j2;
 
+
 @RestController
 @RequestMapping("/flower/*")
+@CrossOrigin(origins = "http://localhost:3000/")
 @Log4j2
 public class deptController {
 
@@ -65,5 +61,6 @@ public class deptController {
     public void deptDelete(@RequestParam Map<String, Object> pmap){
         log.info("deptDelete-deptcontroller 호출");
         deptLogic.deptDelete(pmap);
+        log.info(pmap);
     }
 }
