@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    hello ~~~~~~~~~ test1 -수정
+    hello ~~~~~~~~~ test1
 </body>
 </html>

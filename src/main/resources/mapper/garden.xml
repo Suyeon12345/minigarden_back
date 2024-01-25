@@ -3,4 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.GardenMapper">
+    <resultMap id="DeptDataMap" type="map">
+        <id column="DEPT_CODE" property="dept_code" jdbcType="VARCHAR"/>
+        <result column="DEPT_NAME" property="dept_name" jdbcType="VARCHAR"/>
+        <collection property="emp" javaType="list" ofType="map">
+            <id column="EMP_ID" property="emp_id" jdbcType="VARCHAR"/>
+            <result column="EMP_NAME" property="emp_name" jdbcType="VARCHAR"/>
+            <result column="LEV" property="lev" jdbcType="VARCHAR"/>
+            <result column="EMP_TYPE" property="emp_type" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="getOK"  parameterType="map" resultType="map">
+        select * from garden_table
+    </select>
+
+    <select id="getDeptData" resultMap="DeptDataMap" >
+        select d.dept_code dept_code,d.dept_name dept_name ,e.emp_id emp_id, e.emp_name emp_name,e.lev lev, e.emp_type emp_type
+        from tdept d, temp e
+        where d.dept_code = e.dept_code
+    </select>
 </mapper>
