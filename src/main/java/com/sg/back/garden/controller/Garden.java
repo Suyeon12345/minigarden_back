@@ -21,18 +21,21 @@ public class Garden {
 
     @Autowired
     GardenLogic gardenLogic = null;
+
     @GetMapping("test")
-    public String test(@RequestParam Map<String, Object> rmap){
+    public String test(@RequestParam Map<String, Object> rmap) {
         logger.info("test호출");
         logger.info(rmap.toString());
+
         List<Map<String, Object>> gList = null;
         gList = gardenLogic.getOK(rmap);
         Gson g = new Gson();
         String temp = g.toJson(gList);
         return temp;
     }
+
     @GetMapping("getDeptData")
-    public String getDeptData(){
+    public String getDeptData() {
         logger.info("getDeptData호출");
         List<Map<String, Object>> dList = null;
         dList = gardenLogic.getDeptData();
