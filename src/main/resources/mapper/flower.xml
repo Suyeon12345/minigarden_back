@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deptMapper">
+<select id = "deptList" parameterType = "map" resultType = "map">
+select d_no, d_id, d_name, d_nae from sydept
+</select>
+<select id = "deptDetail" parameterType = "map" resultType = "map">
+select d_no, d_id, d_name, d_nae from sydept where d_no = #{d_no}
+</select>
+<insert id = "deptInsert" parameterType = "map">
+insert into sydept(d_no, d_id, d_name, d_nae) values(SEQ_SYDEPT_NO.nextval,#{d_id}, #{d_name},#{d_nae})
+</insert>
+<update id = "deptUpdate" parameterType = "map">
+update sydept set d_id = #{d_id}, d_name = #{d_name}, d_nae = #{d_nae} where d_no = #{d_no}
+</update>
+<delete id = "deptDelete" parameterType = "map">
+delete from sydept where d_no = #{d_no}
+</delete>
+</mapper>
