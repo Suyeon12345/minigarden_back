@@ -35,4 +35,10 @@
         </where>
         order by pg_no desc
     </select>
+
+
+    <select id="scheduleList" parameterType="java.util.Map" resultType="com.sg.back.angel.vo.AngelVO">
+        SELECT PG_NO, PG_NAME, PG_START, PG_END, PG_DAYSOFWEEK, PG_CATEGORY, PG_TEACHER, PG_CONTENT
+        FROM PROGRAM
+    </select>
 </mapper>

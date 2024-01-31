@@ -1,5 +1,6 @@
 package com.sg.back.angel.dao;
 
+import com.sg.back.angel.vo.AngelVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,5 +42,11 @@ public class AngelDao {
         int result = 0;
         result = sqlSessionTemplate.insert("pgDelete",pg_No);
         return result;
+    }
+
+    public List<AngelVO> scheduleList() {
+        List<AngelVO> calList = null;
+        calList = sqlSessionTemplate.selectList("scheduleList");
+        return calList;
     }
 }
