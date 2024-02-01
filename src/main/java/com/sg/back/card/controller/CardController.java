@@ -52,11 +52,26 @@ public class CardController {
         logger.info("userDetail");
         logger.info(umap.toString());
         List<Map<String,Object>> userdetail = null;
-        userdetail = cardLogic.getusers(umap);
+        userdetail = cardLogic.userDetail(umap);
         Gson g = new Gson();
         String temp = g.toJson(userdetail);
         return temp;
     }
+
+    @GetMapping("consultInsert")
+    public String consultInsert(@RequestParam Map<String,Object> umap){
+        int result =0;
+        result=cardLogic.consultInsert(umap);
+        return "redirect:./userDetail?u_num="+umap.get("u_num").toString();
+    }
+
+    @GetMapping("consultDelete")
+    public String consultDelete(int tb_num,int u_num){
+        int result =0;
+        result=cardLogic.consultDelete(tb_num);
+        return "redirect:./userDetail?u_num="+u_num;
+    }
+
 
     @PostMapping("makecard")
     public String makeCard(@RequestBody Map<String,Object> cMap) {

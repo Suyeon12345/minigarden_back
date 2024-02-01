@@ -48,4 +48,23 @@
 			</if>
 		</where>
   </select>
+  <select id="consultList" parameterType="map" resultType="map">
+  SELECT
+   tb_num,TO_CHAR(TB_DATE, 'YYYY-MM-DD') AS FORMATTED_DATE,tb_content,U_NAME ,tb_UNUM,tb_HOW,tb_time
+FROM
+    USERTALKBOARD , USERS 
+WHERE
+   tb_UNUM =U_NUM 
+  
+ORDER BY
+    tb_date
+  </select>
+  <insert id="consultInsert" parameterType="map">
+  INSERT INTO USERTALKBOARD(tb_num,tb_date,tb_how,tb_time,tb_content,tb_unum)
+VALUES (SEQ_UTB_TNUM.nextval,TO_DATE(#{tb_date}, 'YYYY-MM-DD'),#{tb_how},#{tb_time},#{tb_content},#{u_num})
+  </insert>
+  <delete id ="consultDelete" parameterType="int">
+  DELETE FROM USERTALKBOARD
+  WHERE tb_num = #{value}
+  </delete>
 </mapper>
